@@ -1,0 +1,1 @@
+ENDPOINT="***.amazonaws.com" CLIENT_ID="***" CERT_PATH="cert/***-certificate.pem.crt" KEY_PATH="cert/***-private.pem.key" ROOT_CA_PATH="cert/AmazonRootCA1.pem" python3 main.py
