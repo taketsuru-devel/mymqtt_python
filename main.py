@@ -4,8 +4,10 @@
 import sys
 import os
 import signal
-import mymqtt
 
+from mqtt import MqttObj
+from mqtt_publish_object import MqttPublishObject
+from mqtt_subscribe_object import MqttSubscribeObject
 
 if __name__ == "__main__":
     mqtt = None
@@ -16,13 +18,13 @@ if __name__ == "__main__":
         print("exit")
         sys.exit(None)
 
-    mqtt = mymqtt.MqttObj()
+    mqtt = MqttObj()
             
     signal.signal(signal.SIGTERM, __on_exit)
     signal.signal(signal.SIGINT, __on_exit)
 
-    publishObj = mymqtt.MqttPublishObject("test/pub", 5, lambda: {"test": "testvalue"} )
-    subscribeObj = mymqtt.MqttSubscribeObject("test/pub", lambda mesDict: print(mesDict.get("test", "ttt")))
+    publishObj = MqttPublishObject("test/pub", 5, lambda: {"test": "testvalue"} )
+    subscribeObj = MqttSubscribeObject("test/pub", lambda mesDict: print(mesDict.get("test", "ttt")))
     mqtt.register_publish(publishObj)
     mqtt.register_subscribe(subscribeObj)
 
