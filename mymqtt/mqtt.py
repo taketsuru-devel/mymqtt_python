@@ -13,9 +13,6 @@ from awsiot import mqtt_connection_builder
 from time import sleep
 import threading
 
-def test(a,b,c):
-    print("sub")
-
 class MqttObj:
     mqtt_connection = None
     publish_obj = []
