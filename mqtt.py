@@ -70,6 +70,9 @@ class MqttObj:
                 break
             sleep(1)
 
+    def publish_once(self, topic, message_obj):
+        self.mqtt_connection.publish(topic=topic, payload=json.dumps(message_obj), qos=mqtt.QoS.AT_LEAST_ONCE)
+
     def stop(self):
         # stop publish loop
         self.exit = True
